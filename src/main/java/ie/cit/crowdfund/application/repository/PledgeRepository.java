@@ -8,9 +8,15 @@ import org.springframework.data.repository.CrudRepository;
 /**
  * Created by Pavel on 17/11/2016.
  */
-public interface PledgeRepository extends CrudRepository<Pledge, Sort> {
+public interface PledgeRepository extends CrudRepository<Pledge, String> {
 
     Pledge save(Pledge pledge);
 
-    Iterable<Pledge> findAll(Iterable<Sort> sort);
+    boolean exists(String id);
+
+    Pledge findOne(String id);
+
+    Iterable<Pledge> findAll(Iterable<String> id);
+
+    Iterable<Pledge> findAll();
 }
