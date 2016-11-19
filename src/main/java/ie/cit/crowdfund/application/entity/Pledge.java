@@ -6,8 +6,8 @@ package ie.cit.crowdfund.application.entity;
 import javax.persistence.*;
 import java.sql.Timestamp;
 
-@Entity(name = "donates")
-@Table(name = "donates", uniqueConstraints = @UniqueConstraint(columnNames = {"user_id", "project_id"}))
+@Entity(name = "pledges")
+@Table(name = "pledges", uniqueConstraints = @UniqueConstraint(columnNames = {"user_id", "project_id"}))
 public class Pledge {
 
     @Id

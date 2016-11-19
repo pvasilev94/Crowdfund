@@ -8,13 +8,9 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Pavel on 17/11/2016.
- */
 @Entity(name = "projects")
 public class Project {
 
-    private double FINISHED = 100;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -42,13 +38,11 @@ public class Project {
     @Column(name = "project_name")
     private String name;
 
-    @Column
-    private String website_url;
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "project")
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "project")
     private List<Pledge> PledgeList = new ArrayList<>();
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
     @JoinColumn(name = "user_id")
     private User user;
 
@@ -162,27 +156,19 @@ public class Project {
     }
 
     public boolean finishedProject() {
-        if (percentPledge() >= FINISHED)
-        {
-            return true;
-        }
-        else {
-            return false;
-        }
+//        if (percentPledge() >= FINISHED)
+//        {
+//            return true;
+//        }
+//        else {
+//            return false;
+//        }
+        return true;
     }
 
     public String dateFormat() {
         return "" + date.getDate() + "-" + (date.getMonth() + 1) + "-" + (date.getYear() + 1900);
     }
-
-    public String getWebsite_url() {
-        return website_url;
-    }
-
-    public void setWebsite_url(String website_url) {
-        this.website_url = website_url;
-    }
-
     @Override
     public String toString() {
         return "Project{" +
@@ -196,7 +182,6 @@ public class Project {
                 ", status='" + status + '\'' +
                 ", name='" + name + '\'' +
                 ", PledgeList=" + PledgeList +
-                ", Website Url = " + website_url +
                 '}';
     }
 }

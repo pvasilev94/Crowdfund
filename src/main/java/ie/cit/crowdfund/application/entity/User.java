@@ -1,11 +1,9 @@
 package ie.cit.crowdfund.application.entity;
 
 import javax.persistence.*;
+import java.util.DoubleSummaryStatistics;
 import java.util.List;
 
-/**
- * Created by Pavel on 17/11/2016.
- */
 @Entity(name = "users")
 public class User {
 
@@ -14,10 +12,7 @@ public class User {
     private int id;
 
     @Column(length = 45)
-    private String firstName;
-
-    @Column(length = 45)
-    private String lastName;
+    private String fullName;
 
     @Column(length = 80, unique = true)
     private String email;
@@ -28,16 +23,17 @@ public class User {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
     private List<Project> projects;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
     private List<Pledge> pledges;
 
+    @Column
+    private Double credit;
 
     public User() {
     }
 
-    public User(String firstName, String lastName, String email, String username, String password, String role,boolean enabled) {
-        this.firstName = firstName;
-        this.lastName = lastName;
+    public User(String fullName, String email, String password) {
+        this.fullName = fullName;
         this.email = email;
         this.password = password;
     }
@@ -50,20 +46,12 @@ public class User {
         this.id = id;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getFullName() {
+        return fullName;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setFullName(String firstName) {
+        this.fullName = firstName;
     }
 
     public String getEmail() {
@@ -98,7 +86,12 @@ public class User {
         this.password = password;
     }
 
-    public String getfullName() {
-        return firstName +" "+ lastName;
+    public Double getCredit() {
+        return credit;
     }
+
+    public void setCredit(Double credit) {
+        this.credit = credit;
+    }
+
 }
