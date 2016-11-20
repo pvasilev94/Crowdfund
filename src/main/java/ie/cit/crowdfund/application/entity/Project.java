@@ -11,7 +11,6 @@ import java.util.List;
 @Entity(name = "projects")
 public class Project {
 
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -163,7 +162,7 @@ public class Project {
 //        else {
 //            return false;
 //        }
-        return true;
+        return false;
     }
 
     public String dateFormat() {
