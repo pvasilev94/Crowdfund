@@ -4,10 +4,12 @@ import ie.cit.crowdfund.application.entity.User;
 import ie.cit.crowdfund.application.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Service;
 
 /**
  * Created by Pavel on 19/11/2016.
  */
+@Service
 public class UserServiceImp implements UserService {
 
     @Autowired

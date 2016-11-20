@@ -25,9 +25,14 @@ public class UserRepositoryTest extends CrowdfundApplication {
 
 
     @Test
-    public void findById() throws Exception {
-        assertEquals("Jenna Smith", repository.findOne(1).getFullName());
+    public void findByEmail() throws Exception {
+        assertEquals("Jenna Smith", repository.findByIdNative("something@gmail.com").getFullName());
 
     }
+    @Test
+    public void findById() throws Exception {
+        assertEquals("Jenna Smith", repository.findOne(1).getFullName());
+    }
+
 
 }

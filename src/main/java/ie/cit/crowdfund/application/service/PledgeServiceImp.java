@@ -3,10 +3,12 @@ package ie.cit.crowdfund.application.service;
 import ie.cit.crowdfund.application.entity.Pledge;
 import ie.cit.crowdfund.application.repository.PledgeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  * Created by Pavel on 19/11/2016.
  */
+@Service
 public class PledgeServiceImp implements PledgeService {
 
     @Autowired
