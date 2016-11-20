@@ -10,6 +10,8 @@ import java.util.List;
  */
 public interface UserRepository extends CrudRepository<User, Integer> {
 
-    List<User> findById(String id);
+    User findOne(Integer id);
+
+    Iterable<User> findAll();
 
 }

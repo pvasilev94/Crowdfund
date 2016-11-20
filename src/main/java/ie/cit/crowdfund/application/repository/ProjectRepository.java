@@ -20,5 +20,4 @@ public interface ProjectRepository extends CrudRepository<Project, Integer> {
 
     List<Project> findByUser(String id);
 
-
 }
