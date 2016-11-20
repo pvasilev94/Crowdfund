@@ -6,15 +6,15 @@ import org.springframework.data.repository.CrudRepository;
 /**
  * Created by Pavel on 17/11/2016.
  */
-public interface PledgeRepository extends CrudRepository<Pledge, String> {
+public interface PledgeRepository extends CrudRepository<Pledge, Integer> {
 
     Pledge save(Pledge pledge);
 
-    boolean exists(String id);
+    boolean exists(Integer id);
 
-    Pledge findOne(String id);
+    Pledge findOne(Integer id);
 
-    Iterable<Pledge> findAll(Iterable<String> id);
+    Iterable<Pledge> findAll(Iterable<Integer> id);
 
     Iterable<Pledge> findAll();
 }

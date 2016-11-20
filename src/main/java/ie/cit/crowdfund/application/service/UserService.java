@@ -1,7 +1,9 @@
 package ie.cit.crowdfund.application.service;
 
-/**
- * Created by Pavel on 19/11/2016.
- */
-public class UserService {
+import ie.cit.crowdfund.application.entity.User;
+
+public interface UserService {
+
+        User findUser(Integer id);
+        User findUserByEmail(String email);
 }
