@@ -27,8 +27,7 @@
                 <li th:classappend="${page == 'tasks' ? 'active' : ''}"><a href="#" th:href="@{/task}">My Projects</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li th:if="${#authorization.expression('!isAuthenticated()')}"><a href="/signin" th:href="@{/signin}">Sign in</a></li>
-                <li th:if="${#authorization.expression('isAuthenticated()')}"><a href="/logout" th:href="@{/logout}">Logout</a></li>
+                <li th:classappend="${page == 'signin' ? 'active' : ''}"><a href="#" th:href="@{/signin}">Sign in</a></li>
             </ul>
         </div>
         <!--/.nav-collapse -->
