@@ -1,4 +1,4 @@
-package ie.cit.crowdfund.application.home;
+package ie.cit.crowdfund.application.controller;
 
 import com.google.common.base.Throwables;
 import org.springframework.http.HttpStatus;

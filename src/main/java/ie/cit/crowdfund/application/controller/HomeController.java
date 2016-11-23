@@ -1,4 +1,4 @@
-package ie.cit.crowdfund.application.home;
+package ie.cit.crowdfund.application.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
