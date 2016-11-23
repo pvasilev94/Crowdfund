@@ -21,7 +21,7 @@ public class ProjectRepositoryTest extends CrowdfundApplication{
 
     @Test
     public void findOne() throws Exception {
-        assertEquals("FUNDED", repository.findOne(1).getStatus().toString());
+        assertEquals("FUNDEDs", repository.findOne(1).getStatus().toString());
         assertEquals("ProjectTransformers", repository.findOne(1).getName());
     }
 
