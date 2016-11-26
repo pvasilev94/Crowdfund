@@ -10,7 +10,7 @@
 
 <body>
 
-<form class="form-narrow form-horizontal" action="/j_spring_security_check" method="post" th:action="@{/validate}">
+<form class="form-narrow form-horizontal" th:action="@{/signin}" method="post">
     <th:block th:if="${param.error != null}">
         <div th:replace="fragments/alert :: alert (type='danger', message='Sign in error. Please try again.')"></div>
     </th:block>
