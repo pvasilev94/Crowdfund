@@ -23,13 +23,13 @@ public class UserDetailsServiceImp implements UserDetailsService {
 
     @Override
     @Transactional(readOnly = true)
-    public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException {
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
 
-        User user = userRepository.findByIdNative(login);
+        User user = userRepository.findByIdNative(email);
 
-        Collection<GrantedAuthority> authorities = Arrays.asList(new SimpleGrantedAuthority("ROLE_USER"));
+        Collection<GrantedAuthority> authorities = Arrays.asList(new SimpleGrantedAuthority("ROLE_ADMIN"));
 
-        return new org.springframework.security.core.userdetails.User(user.getFullName(),
+        return new org.springframework.security.core.userdetails.User(user.getEmail(),
                 user.getPassword(), authorities);
     }
 

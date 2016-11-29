@@ -19,29 +19,31 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     UserRepository userRepository;
 
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        http
-                    .authorizeRequests()
-                    .antMatchers("/", "/home").permitAll()
-                    .anyRequest().authenticated()
-                    .and()
-                .formLogin()
-                     .loginPage("/signin")
-                     .permitAll()
-                     .and()
-                .logout()
-                     .permitAll();
-    }
+//    @Override
+//    protected void configure(HttpSecurity http) throws Exception {
+//        http
+//                    .authorizeRequests()
+//                    .antMatchers("/", "/home").permitAll()
+//                    .anyRequest().authenticated()
+//                    .and()
+//                .formLogin()
+//                     .loginPage("/signin")
+//                     .defaultSuccessUrl("/homeSignedIn")
+//                     .permitAll()
+//                     .and()
+//                .logout()
+//                     .permitAll();
+//    }
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
 
         Iterable<User> users = userRepository.findAll();
         for (User user : users) {
+            System.out.println(user.getFullName());
             auth
                     .inMemoryAuthentication()
-                    .withUser(user.getEmail()).password(user.getPassword()).roles("USER");
+                    .withUser(user.getEmail()).password(user.getPassword()).roles("ADMIN");
         }
     }
     //ignore authentication for resources;
