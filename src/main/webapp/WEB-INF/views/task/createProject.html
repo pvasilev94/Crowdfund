@@ -2,57 +2,48 @@
 <html>
 
 <head>
-    <title>Sign In</title>
+    <title>Create Project</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link href="../../../resources/css/bootstrap.min.css" rel="stylesheet" media="screen" th:href="@{/resources/css/bootstrap.min.css}"/>
     <link href="../../../resources/css/core.css" rel="stylesheet" media="screen" th:href="@{/resources/css/core.css}" />
 </head>
 
 <body>
-
-<form class="form-narrow form-horizontal" th:action="@{/signin}" method="post">
-    <th:block th:if="${param.error != null}">
-        <div th:replace="fragments/alert :: alert (type='danger', message='Sign in error. Please try again.')"></div>
-    </th:block>
+<form class="form-narrow form-horizontal" th:action="@{/createprojects}"  method="post">
     <fieldset>
         <legend>Create Project</legend>
         <div class="form-group">
             <label for="projectName" class="col-lg-2 control-label">Name:</label>
             <div class="col-lg-10">
-                <input type="text" class="form-control" id="projectName" placeholder="Name" name="projectName" />
+                <input type="text" th:field="${project.name}" class="form-control" id="projectName" placeholder="Name" name="name" />
             </div>
         </div>
 
         <div class="form-group">
             <label for="projectinfo" class="col-lg-2 control-label">Info: </label>
             <div class="col-lg-10">
-                <textarea class="form-control" rows="4" id="projectinfo" placeholder="Put your project info here:"></textarea>
+                <textarea class="form-control" th:field="${project.descriptionProject}" rows="4" id="projectinfo" placeholder="Put your project info here:" name="descriptionProject"></textarea>
             </div>
         </div>
 
         <div class="form-group">
             <label for="image" class="col-lg-2 control-label">Image:</label>
             <div class="col-lg-10">
-                <input type="text" class="form-control" id="image" placeholder="Put project url image here: " name="image" />
+                <input type="text" th:field="${project.image}" class="form-control" id="image" placeholder="Put project url image here: " name="image" />
             </div>
         </div>
 
         <div class="form-group">
             <label for="amount" class="col-lg-2 control-label">amount:</label>
             <div class="col-lg-10">
-                <input type="text" class="form-control" id="amount" placeholder="What is the amount you need ?: " name="amount" />
+                <input type="text" th:field="${project.requiredMoney}" class="form-control" id="amount" placeholder="What is the amount you need ?: " name="requiredMoney" />
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-lg-offset-2 col-lg-10">
-                <button type="submit" class="btn btn-default">Create</button>
+                <button type="submit" class="btn btn-default" name="action" value="create">Create</button>
                 <button type="submit" class="btn btn-default">Cancel</button>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-lg-offset-2 col-lg-10">
-                <p><a href="signup" th:href="@{/}">Cancel</a></p>
             </div>
         </div>
     </fieldset>

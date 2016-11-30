@@ -1,6 +1,7 @@
 package ie.cit.crowdfund.application.service;
 
 import ie.cit.crowdfund.application.entity.Project;
+import ie.cit.crowdfund.application.entity.User;
 import ie.cit.crowdfund.application.repository.ProjectRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -34,9 +35,19 @@ public class ProjectServiceImp implements ProjectService {
     public void delete(Project project) {
         projectRepository.delete(project);
     }
+    @Override
+    public List<Project> findByUser(User user) {
+        return projectRepository.findByUser(user);
+    }
 
     @Override
-    public List<Project> findByUser(String id) {
-        return projectRepository.findByUser(id);
+    public int createProject(User user, String projectName, String projectDescription, String image, double amount) {
+        Project project = new Project();
+        project.setName(projectName);
+        project.setdescriptionProject(projectDescription);
+        project.setImage(image);
+        project.setrequiredMoney(amount);
+        projectRepository.save(project);
+        return project.getId();
     }
 }

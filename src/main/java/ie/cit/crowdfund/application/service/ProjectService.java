@@ -1,6 +1,7 @@
 package ie.cit.crowdfund.application.service;
 
 import ie.cit.crowdfund.application.entity.Project;
+import ie.cit.crowdfund.application.entity.User;
 
 import java.util.List;
 
@@ -17,5 +18,7 @@ public interface ProjectService {
 
     void delete(Project project);
 
-    List<Project> findByUser(String Id);
+    List<Project> findByUser(User user);
+
+    int createProject(User user, String projectName, String projectDescription, String image, double amount);
 }

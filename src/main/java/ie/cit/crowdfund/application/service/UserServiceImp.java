@@ -4,6 +4,8 @@ import ie.cit.crowdfund.application.entity.User;
 import ie.cit.crowdfund.application.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 /**
@@ -26,5 +28,11 @@ public class UserServiceImp implements UserService {
     public User findUserByEmail(String email) {
         User user = userRepository.findByIdNative(email);
         return user;
+    }
+
+    @Override
+    public User currentUser() {
+        Authentication auth =  SecurityContextHolder.getContext().getAuthentication();
+        return findUserByEmail(auth.getName());
     }
 }

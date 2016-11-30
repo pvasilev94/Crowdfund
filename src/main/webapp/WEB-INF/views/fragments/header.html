@@ -22,12 +22,16 @@
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
                 <li th:classappend="${page == 'home' ? 'active' : ''}"><a href="#" th:href="@{/}">Home</a></li>
-                <li th:classappend="${page == 'messages' ? 'active' : ''}"><a href="#" th:href="@{/message}">All Projects</a></li>
+                <li th:classappend="${page == 'myprojects' ? 'active' : ''}"><a href="#" th:href="@{/myprojects}">My Projects</a></li>
+                <li th:classappend="${page == 'projects' ? 'active' : ''}"><a href="#" th:href="@{/projects}">All Projects</a></li>
                 <li th:classappend="${page == 'tasks' ? 'active' : ''}"><a href="#" th:href="@{/task}">My Pledges</a></li>
-                <li th:classappend="${page == 'projects' ? 'active' : ''}"><a href="#" th:href="@{/projects}">My Projects</a></li>
+                <li th:classappend="${page == 'createprojects' ? 'active' : ''}"><a href="#" th:href="@{/createprojects}">Create Project</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li th:classappend="${page == 'signin' ? 'active' : ''}"><a href="#" th:href="@{/signin}">Sign in</a></li>
+                <li><a href="#"  th:utext = "${currentUser.getFullName()}"></a></li>
+                <li><a href="#" th:utext = "${currentUser.getCredit()}"></a></li>
+                <li><a>$</a></li>
+
             </ul>
         </div>
         <!--/.nav-collapse -->
