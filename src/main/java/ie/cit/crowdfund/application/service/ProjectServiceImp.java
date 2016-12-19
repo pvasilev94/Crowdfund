@@ -16,6 +16,10 @@ public class ProjectServiceImp implements ProjectService {
 
     @Autowired
     ProjectRepository projectRepository;
+
+    @Autowired
+    UserService userService;
+
     @Override
     public Project save(Project project) {
         return projectRepository.save(project);
@@ -47,6 +51,8 @@ public class ProjectServiceImp implements ProjectService {
         project.setdescriptionProject(projectDescription);
         project.setImage(image);
         project.setrequiredMoney(amount);
+        project.setUser(userService.currentUser());
+//        project.setDate();
         projectRepository.save(project);
         return project.getId();
     }

@@ -9,11 +9,12 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.servlet.configuration.EnableWebMvcSecurity;
 
 import java.util.List;
 
 @Configuration
-@EnableWebSecurity
+@EnableWebMvcSecurity // use EnableWebMvcSecurity instead of EnableWebSecurity, because it adds automatically crsf token
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired

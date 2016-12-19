@@ -13,7 +13,6 @@
 <!--/* Content of this page will be decorated by the elements of layout.html (task/layout) */-->
 <div layout:fragment="content">
 
-
     <table class="table table-bordered table-striped">
         <thead>
         <tr>
@@ -25,12 +24,9 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:if="${projects.empty}">
-            <td colspan="4">No tasks</td>
-        </tr>
         <tr th:each="project : ${projects}">
             <td th:text="${project.getId()}"></td>
-            <td><a th:text="${project.getName()}" th:href="@{|/projects/${project.getId()}|}"></a></td>
+            <td><a href="#" th:text="${project.getName()}"></a></td>
             <td th:text="${project.getdescriptionProject()}"></td>
             <td th:text="${project.getrequiredMoney()}"></td>
             <td th:text="${project.getUser().getFullName()}"></td>
@@ -41,6 +37,23 @@
                 <button type="submit" class="btn btn-default">Edit</button>
                 <button type="submit" class="btn btn-default">Delete</button>
             </td>
+        </tr>
+        </tbody>
+    </table>
+    <table class="table table-bordered table-striped">
+        <thead>
+        <tr>
+            <td>Donations</td>
+            <td>Donator</td>
+        </tr>
+        <tr th:if="${donation.empty}">
+            <td colspan="4">No Donations</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="donation : ${donation}">
+            <td th:text="${donation.getAmount()}"></td>
+            <td th:text="${donation.getUser().getFullName()}"></td>
         </tr>
         </tbody>
     </table>

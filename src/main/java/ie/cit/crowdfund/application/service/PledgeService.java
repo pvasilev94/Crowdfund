@@ -16,4 +16,6 @@ public interface PledgeService {
     Iterable<Pledge> findAll(Iterable<Integer> id);
 
     Iterable<Pledge> findAll();
+
+    Iterable<Pledge> finddAllByProjectId(Integer id);
 }

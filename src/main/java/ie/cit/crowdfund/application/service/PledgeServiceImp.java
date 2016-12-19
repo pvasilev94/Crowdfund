@@ -38,4 +38,12 @@ public class PledgeServiceImp implements PledgeService {
     public Iterable<Pledge> findAll() {
         return pledgeRepository.findAll();
     }
+
+    @Override
+    public Iterable<Pledge> finddAllByProjectId(Integer id) {
+        return null;
+    }
+    public boolean donate(double amount, String project_id, String user_id){
+        return true;
+    }
 }
