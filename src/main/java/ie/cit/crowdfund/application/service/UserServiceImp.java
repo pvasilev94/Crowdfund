@@ -35,4 +35,19 @@ public class UserServiceImp implements UserService {
         Authentication auth =  SecurityContextHolder.getContext().getAuthentication();
         return findUserByEmail(auth.getName());
     }
+
+    @Override
+    public User save(User user) {
+        return userRepository.save(user);
+    }
+
+    @Override
+    public boolean checkCredit(double amount, User user) {
+        if (user.getCredit() >= amount) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
 }

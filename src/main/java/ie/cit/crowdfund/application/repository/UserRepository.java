@@ -12,6 +12,8 @@ import java.util.List;
  */
 public interface UserRepository extends CrudRepository<User, Integer> {
 
+    User save(User user);
+
     User findOne(Integer id);
 
     @Query(value="Select * FROM users WHERE email = :email", nativeQuery = true)

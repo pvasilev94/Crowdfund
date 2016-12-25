@@ -7,11 +7,11 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 @Entity(name = "pledges")
-@Table(name = "pledges", uniqueConstraints = @UniqueConstraint(columnNames = {"user_id", "project_id"}))
+@Table(name = "pledges")
 public class Pledge {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
     @ManyToOne

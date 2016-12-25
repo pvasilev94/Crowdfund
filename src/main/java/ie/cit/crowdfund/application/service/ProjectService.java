@@ -21,4 +21,8 @@ public interface ProjectService {
     List<Project> findByUser(User user);
 
     int createProject(User user, String projectName, String projectDescription, String image, double amount);
+
+    int saveProject(int id, String description);
+
+    boolean checkProject(double amount, Project project);
 }

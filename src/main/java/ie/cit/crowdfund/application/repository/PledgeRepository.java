@@ -20,6 +20,9 @@ public interface PledgeRepository extends CrudRepository<Pledge, Integer> {
 
     Iterable<Pledge> findAll();
 
+    @Query(value="Select * FROM pledges WHERE user_id = :user_id", nativeQuery = true)
+    Iterable<Pledge> findAll(@Param("user_id")Integer id);
+
     @Query(value="Select * FROM pledges WHERE project = :project", nativeQuery = true)
     Iterable<Pledge> findAllByProjectId(@Param("project")Integer id);
 }

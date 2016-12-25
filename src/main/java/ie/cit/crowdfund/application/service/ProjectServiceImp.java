@@ -56,4 +56,22 @@ public class ProjectServiceImp implements ProjectService {
         projectRepository.save(project);
         return project.getId();
     }
+
+    @Override
+    public boolean checkProject(double amount, Project project) {
+        if (project.getrequiredMoney() >= amount) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    public int saveProject(int id, String description) {
+        Project project = new Project();
+        project = findOne(id);
+        project.setdescriptionProject(description);
+        save(project);
+        return project.getId();
+    }
 }

@@ -18,4 +18,8 @@ public interface PledgeService {
     Iterable<Pledge> findAll();
 
     Iterable<Pledge> finddAllByProjectId(Integer id);
+
+    boolean addPledgeForProject(Pledge pledge);
+
+    Iterable<Pledge> findAllForCurrentUser();
 }

@@ -67,4 +67,35 @@ class ProjectController {
         model.addAttribute("donation", pledges);
         return "task/project";
     }
+    @RequestMapping(value = "/projects/{id}/edit", method = RequestMethod.GET)
+    public String editProject(Model model,@PathVariable int id) {
+        model.addAttribute("project", projectService.findOne(id));
+        return "task/editProject";
+    }
+
+    @RequestMapping(value = "/projects/{id}/edit", method = RequestMethod.POST)
+    public String editProject(@ModelAttribute("project") Project project)  {
+        int projectId = projectService.saveProject(project.getId(), project.getdescriptionProject());
+
+        return "redirect:/projects/" + projectId;
+    }
+
+    @RequestMapping(value = "/projects/{id}/delete", method = RequestMethod.GET)
+    public String deleteProject(Model model,@PathVariable int id)  {
+        model.addAttribute("project", projectService.findOne(id));
+        return "task/confirmation";
+    }
+
+    @RequestMapping(value = "/projects/{id}/delete", method = RequestMethod.POST)
+    public String deleteProject(@ModelAttribute("project") Project project,@RequestParam(value="action", required = true)String action)  {
+        switch(action) {
+            case "delete":
+                projectService.delete(project);
+                return "redirect:/projects/";
+            case "cancel":
+                // do nothing go back to projects
+        }
+        return "redirect:/projects/";
+    }
+
 }

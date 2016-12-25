@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Create Project</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="../../../resources/css/bootstrap.min.css" rel="stylesheet" media="screen" th:href="@{/resources/css/bootstrap.min.css}"/>
+    <link href="../../../resources/css/core.css" rel="stylesheet" media="screen" th:href="@{/resources/css/core.css}" />
+</head>
+
+<body>
+<form class="form-narrow form-horizontal" th:action="@{|/projects/${project.getId()}/donate|}"  method="post">
+    <fieldset>
+        <legend>Donate:</legend>
+        <div class="form-group">
+            <label for="amount" class="col-lg-2 control-label">amount:</label>
+            <div class="col-lg-10">
+                <input type="text" th:field="${donate.amount}" class="form-control" id="amount" placeholder="" name="amount" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-lg-offset-2 col-lg-10">
+                <button type="submit" class="btn btn-default" name="action" value="donate">Donate</button>
+                <button type="submit" class="btn btn-default" name="action" value="cancel">Cancel</button>
+            </div>
+        </div>
+    </fieldset>
+</form>
+</body>
+</html>

@@ -20,6 +20,7 @@
             <td>Donations</td>
             <td>Donator</td>
             <td>Project</td>
+            <td>Time and Date</td>
         </tr>
         <tr th:if="${donations.empty}">
             <td colspan="4">No Donations</td>
@@ -30,6 +31,7 @@
             <td th:text="${donation.getAmount()}"></td>
             <td th:text="${donation.getUser().getFullName()}"></td>
             <td th:text="${donation.getProjectId().getName()}"></td>
+            <td th:text="${donation.getDate()}"></td>
         </tr>
         </tbody>
     </table>
