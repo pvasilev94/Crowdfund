@@ -1,8 +1,6 @@
 package ie.cit.crowdfund.application.entity;
 
-/**
- * Created by Pavel on 17/11/2016.
- */
+
 import javax.persistence.*;
 import java.sql.Timestamp;
 

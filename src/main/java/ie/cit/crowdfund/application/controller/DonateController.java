@@ -10,11 +10,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
-/**
- * Created by Pavel on 24/12/2016.
- */
 @Controller
 public class DonateController {
 
@@ -52,6 +47,23 @@ public class DonateController {
             case "donate":
                 if (pledgeService.addPledgeForProject(pledge))
                 return "redirect:/projects/";
+            case "cancel":
+                // do nothing go back to projects
+        }
+        return "redirect:/projects/";
+    }
+    @RequestMapping(value = "/donations/{id}/cancel", method = RequestMethod.GET)
+    public String cancelDonation(Model model,@PathVariable int id)  {
+        model.addAttribute("donation", pledgeService.findOne(id));
+        return "task/confirmationDonation";
+    }
+
+    @RequestMapping(value = "/projects/{id}/delete", method = RequestMethod.POST)
+    public String cancelDonation(@ModelAttribute("donation") Pledge pledge,@RequestParam(value="action", required = true)String action)  {
+        switch(action) {
+            case "delete":
+                pledgeService.cancelDonation(pledge);
+                return "redirect:/projects/" + pledge.getProject().getId();
             case "cancel":
                 // do nothing go back to projects
         }

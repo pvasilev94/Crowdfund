@@ -1,6 +1,7 @@
 INSERT INTO users VALUES (1, 1000, 'user1@gmail.com', 'User 1', '1234')
 INSERT INTO users VALUES (2, 1000, 'user2@gmail.com', 'User 2', '1234')
 INSERT INTO users VALUES (3, 400, 'user3@gmail.com', 'User 3', '1234')
+
 INSERT INTO projects VALUES (1, 0,CURRENT_TIMESTAMP , 'This is unofficial project.', 'https://newevolutiondesigns.com/images/freebies/cool-wallpaper-1.jpg', 'ProjectTransformers', 10000, 1, 2 )
 INSERT INTO projects VALUES (2, 0,CURRENT_TIMESTAMP , 'This is unofficial project.', 'pathtoimage', 'ProjectGoogle', 500, 1, 2 )
 INSERT INTO projects VALUES (3, 0,CURRENT_TIMESTAMP , 'This is unofficial project.', 'pathtoimage', 'ProjectAmazon', 500, 1, 3 )

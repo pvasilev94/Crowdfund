@@ -31,11 +31,13 @@
             <td th:text="${project.getrequiredMoney()}"></td>
             <td th:text="${project.getUser().getFullName()}"></td>
             <td>
-                <button type="submit" class="btn btn-default">Donate</button>
+                <a href="edit" th:href="@{|/projects/${project.getId()}/donate|}">Donate</a>
             </td>
             <td th:if="${currentUser.getFullName() == project.getUser().getFullName()}">
-                <button type="submit" class="btn btn-default">Edit</button>
-                <button type="submit" class="btn btn-default">Delete</button>
+                <a href="edit" th:href="@{|/projects/${project.getId()}/edit|}">Edit</a>
+            </td>
+            <td th:if="${currentUser.getFullName() == project.getUser().getFullName()}">
+                <a href="edit" th:href="@{|/projects/${project.getId()}/delete|}">Delete</a>
             </td>
         </tr>
         </tbody>

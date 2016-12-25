@@ -2,27 +2,75 @@ package ie.cit.crowdfund.application.service;
 
 import ie.cit.crowdfund.application.entity.Project;
 import ie.cit.crowdfund.application.entity.User;
+import ie.cit.crowdfund.application.repository.ProjectRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-/**
- * Created by Pavel on 19/11/2016.
- */
-public interface ProjectService {
 
-    Project save(Project project);
+@Service
+public class ProjectService {
 
-    Project findOne(Integer id);
+    @Autowired
+    ProjectRepository projectRepository;
 
-    Iterable<Project> findAll();
+    @Autowired
+    UserService userService;
 
-    void delete(Project project);
 
-    List<Project> findByUser(User user);
+    public Project save(Project project) {
+        return projectRepository.save(project);
+    }
 
-    int createProject(User user, String projectName, String projectDescription, String image, double amount);
 
-    int saveProject(int id, String description);
+    public Project findOne(Integer id) {
+        return projectRepository.findOne(id);
+    }
 
-    boolean checkProject(double amount, Project project);
+
+    public Iterable<Project> findAll() {
+        return projectRepository.findAll();
+    }
+
+
+    public void delete(Project project) {
+        projectRepository.delete(project);
+    }
+
+
+    public List<Project> findByUser(User user) {
+        return projectRepository.findByUser(user);
+    }
+
+
+    public int createProject(User user, String projectName, String projectDescription, String image, double amount) {
+        Project project = new Project();
+        project.setName(projectName);
+        project.setdescriptionProject(projectDescription);
+        project.setImage(image);
+        project.setrequiredMoney(amount);
+        project.setUser(userService.currentUser());
+//        project.setDate();
+        projectRepository.save(project);
+        return project.getId();
+    }
+
+
+    public boolean checkProject(double amount, Project project) {
+        if (project.getrequiredMoney() >= amount) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    public int saveProject(int id, String description) {
+        Project project = new Project();
+        project = findOne(id);
+        project.setdescriptionProject(description);
+        save(project);
+        return project.getId();
+    }
 }

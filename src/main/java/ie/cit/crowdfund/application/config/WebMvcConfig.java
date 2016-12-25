@@ -32,9 +32,7 @@ import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
 import org.thymeleaf.templateresolver.TemplateResolver;
 import org.thymeleaf.templateresolver.UrlTemplateResolver;
 
-/**
- * Created by Pavel on 23/11/2016.
- */
+
 @Configuration
 @EnableWebMvc
 @ComponentScan

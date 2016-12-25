@@ -7,9 +7,6 @@ import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
-/**
- * Created by Pavel on 17/11/2016.
- */
 public interface UserRepository extends CrudRepository<User, Integer> {
 
     User save(User user);

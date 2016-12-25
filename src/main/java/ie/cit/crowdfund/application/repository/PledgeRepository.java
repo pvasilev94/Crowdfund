@@ -5,9 +5,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
-/**
- * Created by Pavel on 17/11/2016.
- */
+
 public interface PledgeRepository extends CrudRepository<Pledge, Integer> {
 
     Pledge save(Pledge pledge);

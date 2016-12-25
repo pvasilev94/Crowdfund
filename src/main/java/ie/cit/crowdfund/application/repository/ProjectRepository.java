@@ -6,9 +6,6 @@ import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
 
-/**
- * Created by Pavel on 17/11/2016.
- */
 public interface ProjectRepository extends CrudRepository<Project, Integer> {
 
     Project save(Project project);

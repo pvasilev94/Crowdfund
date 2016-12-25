@@ -7,9 +7,6 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
-/**
- * Created by Pavel on 29/11/2016.
- */
 @ControllerAdvice
 public class CurrentUserController {
     @Autowired
