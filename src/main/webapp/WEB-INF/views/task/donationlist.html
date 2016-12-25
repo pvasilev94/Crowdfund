@@ -32,6 +32,9 @@
             <td th:text="${donation.getUser().getFullName()}"></td>
             <td th:text="${donation.getProjectId().getName()}"></td>
             <td th:text="${donation.getDate()}"></td>
+            <td>
+                <a href="edit" th:href="@{|/donations/${donation.getId()}/cancel|}">Cancel</a>
+            </td>
         </tr>
         </tbody>
     </table>

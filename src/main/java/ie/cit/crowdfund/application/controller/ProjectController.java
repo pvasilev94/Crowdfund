@@ -11,6 +11,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 
 @Controller
 class ProjectController {
@@ -79,10 +81,11 @@ class ProjectController {
     }
 
     @RequestMapping(value = "/projects/{id}/delete", method = RequestMethod.POST)
-    public String deleteProject(@ModelAttribute("project") Project project,@RequestParam(value="action", required = true)String action)  {
+    public String deleteProject(@ModelAttribute("project") Project project,@PathVariable int id,@RequestParam(value="action", required = true)String action)  {
+        project = projectService.findOne(id);
         switch(action) {
             case "delete":
-                projectService.delete(project);
+                projectService.onProjectDelete(project);
                 return "redirect:/projects/";
             case "cancel":
                 // do nothing go back to projects

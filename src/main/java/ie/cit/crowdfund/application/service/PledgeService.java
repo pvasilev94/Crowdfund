@@ -83,7 +83,6 @@ public class PledgeService {
 //                }
             }
         }
-        pledgeRepository.save(donate);
         if (status)
         {
             //update User credit amount
@@ -96,11 +95,18 @@ public class PledgeService {
             double current = project.getrequiredMoney();
             project.setrequiredMoney(current - donation);
             projectService.save(project);
+
+            //update the pledge repo as well
+            pledgeRepository.save(donate);
         }
         return status;
     }
     // TODO change to boolean at later stage to be able to get confirmation in the controller
     public void cancelDonation(Pledge pledge) {
+        System.out.println("USers credit" + pledge.getUser().getCredit());
+        userService.refundCredit(pledge.getUser(), pledge.getAmount());
+            projectService.updateProjectOnDonationCancellation(pledge.getProject(), pledge.getAmount());
+            pledgeRepository.delete(pledge);
 
     }
 

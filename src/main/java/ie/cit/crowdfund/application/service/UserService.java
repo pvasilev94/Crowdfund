@@ -48,4 +48,10 @@ public class UserService {
             return false;
         }
     }
+
+    public void refundCredit(User user, double amount) {
+        System.out.println("USers credit" + user.getCredit());
+        user.setCredit(user.getCredit() + amount);
+        userRepository.save(user);
+    }
 }

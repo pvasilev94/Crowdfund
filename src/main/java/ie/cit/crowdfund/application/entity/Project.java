@@ -2,8 +2,12 @@ package ie.cit.crowdfund.application.entity;
 
 import ie.cit.crowdfund.application.utils.NewFormat;
 import org.hibernate.annotations.Type;
+import org.hibernate.validator.constraints.URL;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.NumberFormat;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,16 +19,20 @@ public class Project {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @NotNull
     @Column
     private double requiredMoney;
 
+    @NotNull
     @Column
     @Type(type = "text")
     private String descriptionProject;
 
+    @URL
     @Column
     private String image;
 
+    @NotNull
     @Column
     private double Pledge_amount;
 
@@ -34,11 +42,11 @@ public class Project {
     @Enumerated
     private Status status;
 
+    @NotNull
     @Column(name = "project_name")
     private String name;
 
-
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "project")
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.REMOVE, mappedBy = "project")
     private List<Pledge> PledgeList = new ArrayList<>();
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)

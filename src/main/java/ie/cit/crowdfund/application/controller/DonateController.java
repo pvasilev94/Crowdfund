@@ -58,10 +58,12 @@ public class DonateController {
         return "task/confirmationDonation";
     }
 
-    @RequestMapping(value = "/projects/{id}/delete", method = RequestMethod.POST)
-    public String cancelDonation(@ModelAttribute("donation") Pledge pledge,@RequestParam(value="action", required = true)String action)  {
+    @RequestMapping(value = "/donations/{id}/cancel", method = RequestMethod.POST)
+    public String cancelDonation(@ModelAttribute("donation") Pledge pledge,@PathVariable int id,@RequestParam(value="action", required = true)String action)  {
+        pledge = pledgeService.findOne(id);
         switch(action) {
             case "delete":
+                System.out.println("Pledge" + pledge.toString());
                 pledgeService.cancelDonation(pledge);
                 return "redirect:/projects/" + pledge.getProject().getId();
             case "cancel":
